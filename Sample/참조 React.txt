@@ -50,6 +50,9 @@ Contacts
             npm i -g create-react-app
 
         2. 프로젝트 생성 - 생성하고자 하는 어느 위치에서도 가능하다. 현재는 20220725_REACT 폴더에 생성
+            프로젝트 생성 패스에 한글이 포함되지 않은 곳에서 작성합니다. 
+            한글이 포함되면 제대로 작성이 안됨.
+            
             20220725_REACT> create-react-app template501
 
         3. 작성한 프로젝트로 이동
@@ -59,4 +62,3 @@ Contacts
             npm run start / npm start
 
         5. 브라우저 확인
-        
