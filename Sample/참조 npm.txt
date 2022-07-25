@@ -2,7 +2,7 @@ npm 명령 간략 설명
 
     1. 검색
         npm search moduleName
-        npm.com에서 검색하는 것이 보기 좋다.
+        npmjs.com에서 검색하는 것이 보기 좋다.
 
     2. 상세 정보
         npm info moduleName
@@ -12,19 +12,20 @@ npm 명령 간략 설명
         npm info moduleName versions
 
     4. 설치
-        npm install -g moduleName
+        전역에서 사용할 수 있도록 전역 설치
+            npm install -g moduleName
+            npm i -g moduleName         => Global 설치
+                설치한 모듈을 어느 경로에서든지 호출할 수 있다
         
-        npm i -g moduleName     => Global 설치
-            설치한 모듈을 어느 경로에서든지 호출할 수 있다
-        
-        npm install moduleName --save
-        npm i [-g] moduleName        => Local 설치
-            설치한 모듈은 설치 경로 내부에 node_modules라는 폴더에 설치되며 해당 경로 하위에서만 호출할 수 있다
+        Local 설치. 설치한 폴더와 하위 폴더에서만 사용 가능
+            npm install moduleName --save
+            npm i [-g] moduleName        => Local 설치
+                설치한 모듈은 설치 경로 내부에 node_modules라는 폴더에 설치되며 해당 경로 하위에서만 호출할 수 있다
 
-        npm install moduleName --save-dev
-        npm i [-g] -D moduleName
-            프로젝트 작성과는 상관없는 모듈을 설치하는 경우 (프로젝트 작성과는 상관 없는 모듈)
-            예] text에 관련된 모듈.
+            npm install moduleName --save-dev
+            npm i [-g] -D moduleName
+                프로젝트 작성과는 상관없는 모듈을 설치하는 경우 (프로젝트 작성과는 상관 없는 모듈)
+                예] text에 관련된 모듈.
 
     5. 삭제
         npm un -g moduleName        npm uninstall -g moduleName
@@ -51,7 +52,7 @@ npm 명령 간략 설명
 
 필요한 모듈을 i 또는 i -D 형태로 설치
 
-    설치 후 node_modules가 잘못된 경우, moduleName와 package-lock.json 삭제
+    설치 후 node_modules가 잘못된 경우, node-modules와 package-lock.json 삭제
 
     재 설치
         package.json의 dependencies와 devDependencies를 재 설치해 준다

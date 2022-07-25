@@ -14,6 +14,7 @@ React 설치
 
     3. 프로젝트 생성    
         create-react-app 프로젝트이름
+            ex) create-react-app template501
         create-react-app 프로젝트이름 --template typescript
         
     4. 프로젝트로 진입

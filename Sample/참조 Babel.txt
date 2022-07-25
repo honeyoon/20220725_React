@@ -82,5 +82,6 @@ Babel 작업 설정
 Webpack 설정 
     npm i -D webpack webpack-cli
 
-    npx webpack-cli init
+    webpack 설정 파일 생성
+        npx webpack-cli init
     
