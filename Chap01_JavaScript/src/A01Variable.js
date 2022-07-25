@@ -73,5 +73,12 @@ const arr = [10, 20];
 let result = arr.push(30);    // 추가후 배열의 개수가 리턴
 console.log(arr, result);
 
+let newArr = arr.concat(40);  // 추가 한 후 새로운 배열을 리턴해 준다.
+console.log(arr, newArr);
 
+// arr = [1, 2];              // Error
 
+const obj = {name: 'NolBu', age: 20};
+obj.address = 'Seoul';
+
+// obj = {x: 10};             // Error
