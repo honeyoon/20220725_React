@@ -39,3 +39,24 @@ React 설치
 Contacts
     http://sample.bmaster.kro.kr/contacts/
     
+
+
+
+경로
+    20220725_REACT
+
+    도스창에서 실행
+        1. React 프로젝트를 생성하는 라이브러리 설치
+            npm i -g create-react-app
+
+        2. 프로젝트 생성 - 생성하고자 하는 어느 위치에서도 가능하다. 현재는 20220725_REACT 폴더에 생성
+            20220725_REACT> create-react-app template501
+
+        3. 작성한 프로젝트로 이동
+            cd template501
+
+        4. 프로젝트 시작 - package.json의 script 참조
+            npm run start / npm start
+
+        5. 브라우저 확인
+        
