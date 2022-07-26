@@ -10,14 +10,62 @@
     <div>
         <h1>JavaScript Event</h1>
 
-        <button name="button 01">Btn 01</button>
-        <button name="button 02">Btn 02</button>
+        <button name="button 01"    onclick="btn01Event(event)">Btn 01</button>
+        <button name="button 02"    onclick="alert('Hello World')">Btn 02</button>
         <button name="button 03" id="btn03">Btn 03</button>
         <button name="button 04" id="btn04">Btn 04</button>
+        <button name="button 05" id="btn05">Btn 05</button>
     </div>
 
     <script type="text/javascript">
-        
+
+        class MyEventClass {
+            constructor() {
+                this.name = 'NolBu';
+
+                // bind() => this를 지정한 객체로 변경해서 새로운 메서를 반환
+                // this.btn03Evt = 
+
+                document.getElementById('btn03').addEventListener('click', function(evt, color){
+                    console.log(this);          // button
+                    console.log(this.name);
+                    console.log(color)
+                });
+
+                // this => class
+                this.btn04Evt = this.btn04Event.bind(this);
+                
+                // document.getElementById('btn04').addEventListener('click', this.btn04Event)
+                document.getElementById('btn04').addEventListener('click', this.btn04Evt)
+
+
+                // Arrow 함수의 경우 this는 선언된 객체의 this를 따른다
+                document.getElementById('btn05').addEventListener('click', (evt) => {
+                    this.btn05Event(evt, 'orange')
+                })
+            }
+
+            btn04Event(evt) {
+                console.log(this);  // button
+                console.log(this.name);
+                console.log(evt.target)
+            }
+            btn05Event(evt, color) {
+                console.log(this);
+                evt.target.style.background = color;
+            }
+        }
+
+        new MyEventClass();
+        /*
+        function btn01Event(evt) {
+            console.log(this);          // window
+        }
+        document.getElementById('btn03').addEventListener('click', function(evt){
+            // console.log(evt.target);
+            console.log(this)
+        })
+        */
     </script>
 </body>
 </html>
