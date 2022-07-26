@@ -1,17 +1,20 @@
-import React, { Component } from "react";
+import React, { Component, createRef } from "react";
 
 class A04CreateDOM extends Component {
   constructor() {
     super();
     this.baseArray = ["NC", "두산", "엘지", "KT", "키움"];
     this.num = 4;
+
+    // DOM 요소를 연결하기 위한 객체. 연결하고자 하는 요소에 ref={teamRef} 형태로 기술해서 연결
+    this.teamRef = createRef();
   }
 
   state = {
     teamOne: "",
     teamTwo: "",
     team: "",
-    isChecked: false,
+    isChecked: true,
     baseObject: [
       { id: 1, team: "NC", value: "NC" },
       { id: 2, team: "두산", value: "Doosan" },
@@ -35,6 +38,14 @@ class A04CreateDOM extends Component {
 
     // 현재 VM에 있는 변수값 기반으로 화면을 강제적으로 리 렌더링 한다.
     this.forceUpdate();
+  }
+
+  componentDidMount() {
+    // const team = document.querySelector('input[name="team"]');
+    // team.style.background = 'orange';
+
+    // console.log(this.teamRef.current);
+    this.teamRef.current.style.background = 'orange';
   }
 
   render() {
@@ -80,7 +91,7 @@ class A04CreateDOM extends Component {
 
         { this.state.isChecked && 
           <div className="input-group">
-            <input type="text" className="form-control" name="team" 
+            <input type="text" className="form-control" name="team"   ref={this.teamRef}
                 value={this.state.team} onChange={this.changeValue} />
             <button className="btn btn-outline-primary btn-sm"
                 onClick={this.addArray}>ADD</button>

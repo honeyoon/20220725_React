@@ -1,6 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 
-class A06PureComponent extends Component {
+// 기본형의 값이 동일한 값으로 변경되면 shouldComponentDidUpdate()가 return false로 
+// 구현되어 있는 클래스
+class A06PureComponent extends PureComponent {
   constructor() {
     super();
 
@@ -12,6 +14,13 @@ class A06PureComponent extends Component {
 
   changeName = () => this.setState({ name: "NolBu" });
   changeObject = () => this.setState({ ary: ["React", "Angular", "Vue"] });
+
+  // PureComponent이 이 메서드가 이미 정의되어 있는 상태라 재 정의할 수 없다. 적으면 에러
+  /*
+  shouldComponentUpdate(props, state) {
+    return true;
+  }
+  */
 
   render() {
     console.log("---------- render() Method ----------");
