@@ -40,6 +40,7 @@ function First() {
 export default First;
 */
 import A01MakeDOM from './components/A01MakeDOM'
+import A02Fragment from './components/A02Fragment'
 
 function App() {
   // View Model
@@ -82,11 +83,12 @@ function App() {
         {makeDOM()}
         <br />
 
+        {/* 사용자 정의 태그 */}
         <MakeDOM />
         <br />
 
         <A01MakeDOM></A01MakeDOM>
-
+        <A02Fragment></A02Fragment>
       </div>
     </div>
   );
