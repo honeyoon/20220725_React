@@ -21,8 +21,10 @@ function reducer(state, action) {
 const title = 'A06. Reducer';
 
 function A06Hook() {
-  // dispatch는 메서드. useReducer 지정한 메서드를 호출.
-  // 값은 useReducer 지정한 메서드의 두번째 매개변수로 전달한다
+  // data는 state에 관리되는 값
+  // dispatch는 메서드. useReducer 지정한 reducer 메서드를 호출.
+  // dispatch로 호출할때 매개변수 값은 useReducer 지정한 메서드의 두번째 매개변수(action)로 전달한다
+  // 지정한 reducer 함수는 리턴된 값으로 현재 data 값 변경 => 화면 리 렌더링 형태가 된다.
   const [data, dispatch] = useReducer(reducer, {
     num: '0',
     str: 'Nolbu',

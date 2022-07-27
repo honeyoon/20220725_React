@@ -4,6 +4,9 @@ import A03FuncEvent from './components/A03FuncEvent'
 import A04CreateDOM from './components/A04CreateDOM'
 import A05Hook from './components/A05Hook'
 import A06Hook from './components/A06Hook'
+import A07HigherOrder from './components/A07HigherOrder'
+import A08Immer from './components/A08Immer'
+import A09Currency from './components/A09Currency'
 
 function App() {
   const address = 'Seoul';
@@ -15,6 +18,9 @@ function App() {
     <div className="m-3">
       <h1>Chap04 Function Component</h1>
 
+      <A09Currency></A09Currency><br />
+      <A08Immer></A08Immer><br />
+      <A07HigherOrder name="NolBu"></A07HigherOrder><br />
       <A06Hook></A06Hook><br />
       <A05Hook></A05Hook><br />
       <A04CreateDOM></A04CreateDOM><br />
