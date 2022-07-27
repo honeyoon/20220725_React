@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 function A04CreateDOM() {
   const baseArray = ["NC", "두산", "엘지", "KT", "키움"];
@@ -16,15 +16,27 @@ function A04CreateDOM() {
     isChecked: false,
   });
 
+  // 화면이 리 렌더링되면 이 변수도 다시 읽어지면서 4로 초기화된다.
+  // let cnt = 4;
+  const cnt = useRef(4);      // 화면 갱신 작업은 하지 않는다.
+
   const changeValue = (evt) => setData({ ...data, [evt.target.name]: evt.target.value });
-  const addTeam = () => setBaseObject(baseObject.concat({ id: 4, team: "삼성", value: "Samsung" }));
+  const addTeam = () => setBaseObject(baseObject.concat({ id: cnt.current++, team: "삼성", value: "Samsung" }));
   const showHide = () => setData({ ...data, isChecked: !data.isChecked });
 
   const changeTeam = (evt) => setData({...data, team: evt.target.value});
   const addBaseArray = () => {
     baseArray.push(data.team);
     // forceUpdate();               // 지원하지 않음. useState 사용
-}
+  }
+
+  const table = baseObject.map(item => (
+    <tr key={item.id}>
+      <td>{item.id}</td>
+      <td>{item.team}</td>
+      <td>{item.value}</td>
+    </tr>
+  ))
 
   return (
     <div>
@@ -51,7 +63,7 @@ function A04CreateDOM() {
             <th>Value</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>{table}</tbody>
       </table>
       <button className="btn btn-outline-primary btn-sm" onClick={addTeam}>ADD TEAM</button>
       <br />
