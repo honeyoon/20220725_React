@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, useCallback} from "react";
+import React, {useState, useEffect, useRef, useCallback, useMemo} from "react";
 
 function A05Hook() {
   // useState
@@ -6,6 +6,8 @@ function A05Hook() {
   const [data, setData] = useState({
     num: 0,
     str: '',
+    avg: '',
+    list: [],
   });
   const [today, setToday] = useState(new Date());
 
@@ -27,16 +29,38 @@ function A05Hook() {
   useEffect(() => {
     // console.log(numRef.current);
     numRef.current.style.background = 'orange';
+    return () => console.log('update 전에 실행할 명령이 있으면 기술');
   }, []);
 
   // useCallback => Event Handler
   const changeNum = useCallback(evt => {
-    setData({...data, num: evt.target.value})
+    setData({...data, [evt.target.name]: Number(evt.target.value)})
   }, [data]);   // 내부에서 참조하는 state 변수, 함수가 대상이 된다
 
   const changeStr = useCallback( evt => {
     setData( data => ({...data, [evt.target.name]: evt.target.value}) )
+  }, []);   // 의존 관계가 없으므로 최초 1번만 실행된다. 가능하면 이 방법 사용.
+
+  const addList = useCallback(() => {
+    setData(data => {
+      if (data.avg > 0) {
+        return {...data, list: data.list.concat(data.avg)}
+      }
+    });
   }, []);
+
+  // useMemo => 일반 메서드
+  const getAverage = (arr) => {
+    console.log('계산중...');
+    if (arr.length === 0) return 0;
+    const total = arr.reduce((total, item) => total + item, 0);
+    return total / arr.length;
+  };
+
+  const getAverageMemo = useMemo(() => {
+    return getAverage(data.list);
+  }, [data.list]);
+
 
   return (
     <div>
@@ -56,10 +80,12 @@ function A05Hook() {
         Today: {today.toLocaleString()}<br />
         <br />
 
-        Avg:
+        Avg: {data.avg} / {getAverageMemo}
         <div className="input-group">
-          <input type="text" name="str" className="form-control" />
-          <button className="btn btn-outline-primary btn-sm">ADD</button>
+          <input type="text" name="avg" className="form-control" 
+            value={data.avg} onChange={changeNum}/>
+          <button className="btn btn-outline-primary btn-sm"
+            onClick={addList}>ADD</button>
         </div>
       </div>
     </div>
