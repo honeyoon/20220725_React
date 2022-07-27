@@ -5,6 +5,8 @@ import A04CreateDOM from './components/A04CreateDOM'
 import A05LifeCycle from './components/A05LifeCycle'
 import A06PureComponent from './components/A06PureComponent'
 import A07ShallowEqual from './components/A07ShallowEqual'
+import A08HigherOrderComp from './components/A08HigherOrderComp'
+import A09Currency from './components/A09Currency'
 
 function App() {
   // 일반 변수. React의 감시 대상 변수가 아니다.
@@ -19,6 +21,9 @@ function App() {
     <div className="m-3">
       <h1>Chap03 Class Component</h1>
 
+      <A09Currency title="A09 Currency"></A09Currency><br />
+      <A08HigherOrderComp name="Hunbu"></A08HigherOrderComp><br />
+      <A08HigherOrderComp name="Nolbu"></A08HigherOrderComp><br />
       <A07ShallowEqual></A07ShallowEqual><br />
       <A06PureComponent></A06PureComponent><br />
       <A05LifeCycle check={false} color={'red'}></A05LifeCycle><br />
@@ -27,7 +32,7 @@ function App() {
       <A02State></A02State><br />
 
       {/* {}로 사용한 값은 변수 이름을 참조한다. 값으로 전달은 {'문자열'}, {30}, {true} */}
-      <A01Props name="NolBu" dom={dom} age={30} add={address} arr={arr} user={user} onAdd={onAdd} isChecked>
+      <A01Props name={"NolBu"} dom={dom} age={30} add={address} arr={arr} user={user} onAdd={onAdd} isChecked>
           값은 속성으로 필요에 따라 전달<br />
           컴퍼넌트 내부의 뷰가 호출하는 곳에 따라 조금씩 다른 요소가 있다면 사용하는 곳에서 전달<br />
           This is App Content A
