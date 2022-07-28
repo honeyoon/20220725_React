@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import "./css/todos.css";
 
 function TodoListItem(props) {
@@ -19,4 +19,5 @@ function TodoListItem(props) {
     </tr>
   );
 }
-export default TodoListItem;
+// props의 변동 사항이 없으면 이전의 props의 데이터를 그대로 사용.
+export default memo(TodoListItem);
