@@ -1,6 +1,9 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 
-function GetContactList () {
+function GetContactList (props) {
+  const {contactList, getContact } = props;
+
   return (
     <div>
       <table className="table">
@@ -12,7 +15,16 @@ function GetContactList () {
             <th>Address</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {contactList.contacts && contactList.contacts.map(contact => (
+            <tr key={contact.no}>
+              <td>{contact.no}</td>
+              <td><Link to="#"  onClick={() => getContact(contact.no)}>{contact.name}</Link></td>
+              <td>{contact.tel}</td>
+              <td>{contact.address}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
   );
