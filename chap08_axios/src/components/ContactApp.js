@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import axios from "axios";
+import {errorCatch} from './../modules/error'
 
 import ContactHeader from "./Contact/ContactHeader";
 import ContactHome from "./Contact/ContactHome";
@@ -29,7 +30,8 @@ function ContactApp() {
       setContact(resp.data);
       navigate('/getContact')
     } catch(err) {
-      console.error(err);
+      // console.error(err);
+      errorCatch(err);
     }
   }
   const deleteContact = useCallback(async no => {
@@ -58,7 +60,8 @@ function ContactApp() {
       navigate('/getContactList');
       getContactList(1, 10);
     } catch(err) {
-      console.error(err);
+      // console.error(err);
+      return <div>Error 발생</div>
     }
   }, [navigate]);
 
