@@ -26,7 +26,7 @@ var accessLogStream = rfs('access.log', {
 app.use(morgan('combined', {stream: accessLogStream}))
 */
 
-app.set('port', (process.env.PORT || 8080));
+app.set('port', (process.env.PORT || 8000));
 
 app.use(express.static('public'));
 app.set('views', __dirname + '/views');
