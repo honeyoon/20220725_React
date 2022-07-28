@@ -1,6 +1,9 @@
 import React from "react";
+import TodoListItem from './TodoListItem'
 
-function Todolist() {
+function Todolist(props) {
+  const {todoList, updateTodo, deleteTodo} = props;
+
   return (
     <div>
       <table className="table">
@@ -12,7 +15,10 @@ function Todolist() {
             <th style={{ width: "10%" }}>Delete</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {todoList.map(todo => <TodoListItem key={todo.id} 
+            todo={todo} updateTodo={updateTodo} deleteTodo={deleteTodo} />)}
+        </tbody>
       </table>
     </div>
   );
