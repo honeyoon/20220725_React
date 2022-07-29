@@ -6,7 +6,8 @@ import ContactHome from './Contact/ContactHome'
 import ContactAdd from './Contact/ContactAdd'
 import ContactUpdate from './Contact/ContactUpdate'
 import ContactGet from './Contact/ContactGet'
-import ContactGetList from './Contact/ContactGetList'
+// import ContactGetList from './Contact/ContactGetList'
+import ListContainer from './../container/ListContainer'
 
 function ContactApp() {
 
@@ -20,7 +21,8 @@ function ContactApp() {
             
             <Routes>
                 <Route path="/"                 element={<ContactHome />}/>
-                <Route path="/getContactList"   element={<ContactGetList /> } />
+                {/* container로 변경 */}
+                <Route path="/getContactList"   element={<ListContainer /> } />
                 <Route path="/getContact"       element={<ContactGet goUpdate={goUpdate} />} />
                 <Route path="/addContact"       element={<ContactAdd /> } />
                 <Route path="/updateContact"    element={<ContactUpdate />} />
