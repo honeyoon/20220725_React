@@ -1,4 +1,5 @@
 import { createAction, handleActions } from 'redux-actions'
+import produce from 'immer'
 
 const TODOLIST_ADDTODO = 'TODOLIST/ADDTODO';
 const TODOLIST_UPDATETODO = 'TODOLIST/UPDATETODO';
@@ -11,7 +12,7 @@ export const deleteTodoAction = createAction(TODOLIST_DELETETODO, id => id);
 export const addTodoAction = createAction(TODOLIST_ADDTODO, text => {
     return {id: cnt++, text, done: false};
 });
-export const changeTextAction = text => ({type: TODOLIST_CHANGETEXT, payload: text});
+export const changeTextAction = createAction(TODOLIST_CHANGETEXT, text => text);
 
 const makeTodo = () => {
     const todos = [];
@@ -23,6 +24,37 @@ const makeTodo = () => {
 
 let cnt = 6;
 
+const init = {
+    todoList: makeTodo(),
+    text: ''
+}
+const todoListR = handleActions({
+    [TODOLIST_UPDATETODO]: (state, action) => {
+        return produce(state, draft => {
+            const index = draft.todoList.findIndex(todo => todo.id === action.payload);
+            draft.todoList[index].done = !draft.todoList[index].done
+        });
+    },
+    [TODOLIST_DELETETODO]: (state, action) => {
+        return produce(state, draft => {
+            const index = draft.todoList.findIndex(todo => todo.id === action.payload);
+            draft.todoList.splice(index, 1);
+        })
+    },
+    [TODOLIST_ADDTODO]: (state, action) => {
+        return produce(state, draft => {
+            draft.todoList.push(action.payload);
+        });
+    },
+    [TODOLIST_CHANGETEXT]: (state, action) => {
+        return produce(state, draft => {
+            draft.text = action.payload;
+        });
+    },
+}, init);
+export default todoListR;
+
+/*
 const init = {
     todoList: makeTodo(),
     text: ''
@@ -47,3 +79,4 @@ const todoListR = (state = init, action) => {
     }
 }
 export default todoListR;
+*/
