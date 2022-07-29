@@ -4,8 +4,8 @@ import { createContext, useCallback, useRef, useState } from 'react'
 const TodoListContext = createContext({
   state: {todoList: [], text: ''},
   action: {
-    updateTodoList: id => {},
-    deleteTodoList: id => {},
+    updateTodo: id => {},
+    deleteTodo: id => {},
     addTodoList: text => {},
     changeText: text => {}
   }
@@ -38,7 +38,7 @@ function TodoListProvider(props) {
 
   const data = {
     state: {todoList, text},
-    action: {}
+    action: {updateTodo, deleteTodo, addTodo, changeText}
   }
   return (
     <TodoListContext.Provider value={data}>
