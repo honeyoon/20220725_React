@@ -46,6 +46,5 @@ function TodoListProvider(props) {
     </TodoListContext.Provider>   
   )
 }
-const TodoListConsumer = TodoListContext.Consumer;
-
-export {TodoListProvider, TodoListConsumer}
+// const TodoListConsumer = TodoListContext.Consumer;
+export {TodoListProvider, TodoListContext}

@@ -26,6 +26,6 @@ function SelectColorProvider(props) {
     </SelectColorContext.Provider>
   )
 }
-const SelectColorConsumer = SelectColorContext.Consumer;
 
-export { SelectColorProvider, SelectColorConsumer };
+// const SelectColorConsumer = SelectColorContext.Consumer;
+export { SelectColorProvider, SelectColorContext };

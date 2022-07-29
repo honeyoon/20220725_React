@@ -1,26 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import ColorBoxContext from './../modules/ColorBoxContext'
-import { SelectColorConsumer } from './../modules/SelectColorContext'
+import { SelectColorContext } from './../modules/SelectColorContext'
 
 function ColorBox() {
-  return (
-    <ColorBoxContext.Consumer>
-      {value => (
-        <SelectColorConsumer>
-          {data => (
-            <div>
-              <h3>{value.contextName}</h3>
-              <div style={{width: '50px', height: '50px', display: 'block', background: value.color}}></div>
+  const colorBox = useContext(ColorBoxContext);
+  const { state } = useContext(SelectColorContext);
 
-              <h3>{data.state.contextName}</h3>
-              <div style={{width: '50px', height: '50px', display: 'block', background: data.state.color}}></div>
-              <div style={{width: '50px', height: '50px', display: 'block', background: data.state.bgColor}}></div>
-            </div>
-          )}
-        </SelectColorConsumer>
-        
-      )}
-    </ColorBoxContext.Consumer>
+  return (
+    <div>
+      <h3>{colorBox.contextName}</h3>
+      <div style={{width: '50px', height: '50px', display: 'block', background: colorBox.color}}></div>
+
+      <h3>{state.contextName}</h3>
+      <div style={{width: '50px', height: '50px', display: 'block', background: state.color}}></div>
+      <div style={{width: '50px', height: '50px', display: 'block', background: state.bgColor}}></div>
+    </div>
   );
 }
 export default ColorBox;
