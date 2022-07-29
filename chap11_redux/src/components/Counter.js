@@ -16,9 +16,10 @@ function Counter(props) {
 }
 export default connect(
   // 등록한 값을 props로 전달한다.
+  // 다증 등록이 되어 있는 경우는 modules/index.js에 정의한 이름으로 참조한다
   state => ({
-    storeName: state.storeName,
-    num: state.num
+    storeName: state.counterR.storeName,
+    num: state.counterR.num
   }),
   dispatch => ({
     increase: num => dispatch(increaseAction(num)),
