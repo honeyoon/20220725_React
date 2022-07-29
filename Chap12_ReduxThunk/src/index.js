@@ -14,13 +14,13 @@ import { Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import ReduxThunk from 'redux-thunk'
-import Logger from 'redux-logger'
+// import Logger from 'redux-logger'
 
 import rootReducer from './modules/'
 
 const store = createStore(
   rootReducer, 
-  composeWithDevTools(applyMiddleware(ReduxThunk, Logger))
+  composeWithDevTools(applyMiddleware(ReduxThunk))
 );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

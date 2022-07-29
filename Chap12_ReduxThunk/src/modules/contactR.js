@@ -51,6 +51,7 @@ export const addContactAction = data => async dispatch => {
   }
 }
 
+// export const changeContactAction = (name, value) => ({type: CHANGE_TEXT, payload: {name, value}})
 export const changeContactAction = evt => ({type: CHANGE_TEXT, payload: evt.target})
 export const setContactAction = () => ({type: SET_CHANGE_TEXT})
 
@@ -111,7 +112,6 @@ const contactR = handleActions(
     [ADD_CONTACT]: (state, action) => {
       return produce(state, draft => {
         draft.loading = true;
-        draft.contact = null;
         draft.error = null;
       })
     },
@@ -128,14 +128,9 @@ const contactR = handleActions(
       })
     },
     [CHANGE_TEXT]: (state, action) => {
-      console.log(action)
-      // return produce(state, draft => {
-      //   draft.contact[action.payload.name] = action.payload.value;
-      // });
-      return {
-        ...state,
-        contact: state.contact['name'] = 'ddd'
-      }
+      return produce(state, draft => {
+        draft.contact[action.payload.name] = action.payload.value;
+      });
     },
     [SET_CHANGE_TEXT]: (state, action) => {
       return produce(state, draft => {
