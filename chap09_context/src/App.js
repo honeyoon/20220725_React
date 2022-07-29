@@ -3,7 +3,7 @@ import TodoTemplate from './components/TodoTemplate'
 
 function App() {
   return (
-    <div className="card-body">
+    <div className="m-3">
       <h1>Chap10 Context</h1>
       
       <ColorBox />
