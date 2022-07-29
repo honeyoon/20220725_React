@@ -5,9 +5,12 @@ const TODOLIST_DELETETODO = 'TODOLIST/DELETETODO';
 const TODOLIST_CHANGETEXT = 'TODOLIST/CHANGETEXT';
 
 // state 변경 작업은 여기서 안된다. 넘길 값에 대한 사전 작업만 여기서 한다.
-export const updateTodoAction = id => ({type: TODOLIST_DELETETODO, payload: id});
+export const updateTodoAction = id => ({type: TODOLIST_UPDATETODO, payload: id});
 export const deleteTodoAction = id => ({type: TODOLIST_DELETETODO, payload: id});
-export const addTodoAction = text => ({type: TODOLIST_ADDTODO, payload: text});
+export const addTodoAction = text => {
+    const todo = {id: cnt++, text, done: false};
+    return {type: TODOLIST_ADDTODO, payload: todo}
+};
 export const changeTextAction = text => ({type: TODOLIST_CHANGETEXT, payload: text});
 
 const makeTodo = () => {
@@ -27,13 +30,18 @@ const init = {
 const todoListR = (state = init, action) => {
     switch (action.type) {
         case TODOLIST_UPDATETODO:
-            return {...state}
+            const update = state.todoList.map(todo => {
+                if (todo.id === action.payload) return {...todo, done: !todo.done};
+                else return todo;
+            })
+            return {...state, todoList: update};
         case TODOLIST_DELETETODO:
-            return {...state}
+            const deleteTodos = state.todoList.filter(todo => todo.id !== action.payload);
+            return {...state, todoList: deleteTodos};
         case TODOLIST_ADDTODO:
-            return {...state}
+            return {...state, todoList: state.todoList.concat(action.payload)};
         case TODOLIST_CHANGETEXT:
-            return {...state}
+            return {...state, text: action.payload}
         default:
             return state;
     }

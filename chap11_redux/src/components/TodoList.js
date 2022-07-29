@@ -1,7 +1,10 @@
 import React from "react";
 import TodoListItem from "./TodoListItem";
+import { connect } from 'react-redux'
 
-function Todolist() {
+function Todolist(props) {
+  const { todoList } = props;
+
   return (
     <div>
       <table className="table">
@@ -14,10 +17,14 @@ function Todolist() {
           </tr>
         </thead>
         <tbody>
-          <TodoListItem />
+          {todoList.map(todo => <TodoListItem key={todo.id} todo={todo} />)}
         </tbody>
       </table>
     </div>
   );
 }
-export default Todolist;
+export default connect(
+  state => ({
+    todoList: state.todoListR.todoList,
+  })
+)(Todolist);
