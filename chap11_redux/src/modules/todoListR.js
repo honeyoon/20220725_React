@@ -1,3 +1,4 @@
+import { createAction, handleActions } from 'redux-actions'
 
 const TODOLIST_ADDTODO = 'TODOLIST/ADDTODO';
 const TODOLIST_UPDATETODO = 'TODOLIST/UPDATETODO';
@@ -5,12 +6,11 @@ const TODOLIST_DELETETODO = 'TODOLIST/DELETETODO';
 const TODOLIST_CHANGETEXT = 'TODOLIST/CHANGETEXT';
 
 // state 변경 작업은 여기서 안된다. 넘길 값에 대한 사전 작업만 여기서 한다.
-export const updateTodoAction = id => ({type: TODOLIST_UPDATETODO, payload: id});
-export const deleteTodoAction = id => ({type: TODOLIST_DELETETODO, payload: id});
-export const addTodoAction = text => {
-    const todo = {id: cnt++, text, done: false};
-    return {type: TODOLIST_ADDTODO, payload: todo}
-};
+export const updateTodoAction = createAction(TODOLIST_UPDATETODO, id => id);
+export const deleteTodoAction = createAction(TODOLIST_DELETETODO, id => id);
+export const addTodoAction = createAction(TODOLIST_ADDTODO, text => {
+    return {id: cnt++, text, done: false};
+});
 export const changeTextAction = text => ({type: TODOLIST_CHANGETEXT, payload: text});
 
 const makeTodo = () => {
