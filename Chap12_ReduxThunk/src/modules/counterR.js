@@ -4,8 +4,30 @@ import { createAction, handleActions } from 'redux-actions'
 const COUNTER_INCREASE = 'COUNTER/INCREASE';
 const COUNTER_DECREASE = 'COUNTER/DECREASE'; 
 
-export const increaseAction = createAction(COUNTER_INCREASE, (num) => num);
-export const decreaseAction = createAction(COUNTER_DECREASE);
+// {type: 'COUNTER/INCREASE', payload: 3}
+const increase = createAction(COUNTER_INCREASE, (num) => {
+  /*
+  console.log('1 Start')
+  setTimeout(() => {
+    console.log('3. 처리 완료')
+    return num
+  }, 1000)
+  console.log('2 End')
+  */
+  return num;   // {type: 'COUNTER/INCREASE', payload: 3}
+});
+// export const decreaseAction = createAction(COUNTER_DECREASE);
+
+export const increaseAction = num => dispatch => {
+  setTimeout(() => {
+    dispatch(increase(num));
+  }, 1000)
+};
+export const decreaseAction = () => dispatch => {
+  setTimeout(() => {
+    dispatch({type: COUNTER_DECREASE});
+  }, 1000)
+}
 
 const init = {
   num: 0,

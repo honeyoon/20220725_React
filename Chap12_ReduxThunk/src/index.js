@@ -12,9 +12,15 @@ import {BrowserRouter} from 'react-router-dom'
 import { applyMiddleware, legacy_createStore as createStore } from 'redux'
 import { Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
+
+import ReduxThunk from 'redux-thunk'
+
 import rootReducer from './modules/'
 
-const store = createStore(rootReducer, composeWithDevTools());
+const store = createStore(
+  rootReducer, 
+  composeWithDevTools(applyMiddleware(ReduxThunk))
+);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
