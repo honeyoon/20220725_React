@@ -28,7 +28,7 @@ const GetContactList = () => {
                     </thead>
                     <tbody>
                         {contactList.contacts && contactList.contacts.map(contact => (
-                            <tr>
+                            <tr key={contact.no}>
                                 <td>{contact.no}</td>
                                 <td><Link to={"/getContact/" + contact.no}>{contact.name}</Link></td>
                                 <td>{contact.tel}</td>

@@ -20,7 +20,7 @@ import rootReducer from './modules/'
 
 const store = createStore(
   rootReducer, 
-  composeWithDevTools(applyMiddleware(ReduxThunk))
+  composeWithDevTools(applyMiddleware(ReduxThunk, Logger))
 );
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
