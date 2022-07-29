@@ -10,10 +10,11 @@ import { Provider } from 'react-redux'
 // 크롬의 react-dev-tools 플러그인과 연동되는 라이브러리
 import { composeWithDevTools } from 'redux-devtools-extension'
 
-import counterR from './modules/counterR'
+// import counterR from './modules/counterR'
+import rootReducer from './modules'
 
 // 단일 스토어가 기본이다.
-const store = createStore(counterR, composeWithDevTools());
+const store = createStore(rootReducer, composeWithDevTools());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
