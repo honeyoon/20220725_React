@@ -14,6 +14,7 @@ import { Provider } from 'react-redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 
 import ReduxThunk from 'redux-thunk'
+import Logger from 'redux-logger'
 
 import rootReducer from './modules/'
 
